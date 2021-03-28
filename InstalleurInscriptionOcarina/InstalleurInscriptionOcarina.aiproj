@@ -1,0 +1,45 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">All</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>2c85cb1c-e0da-4afa-bad8-1592cc920504</ProjectGuid>
+    <OutputType>msi</OutputType>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>InstalleurInscriptionOcarina.aip</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <IsWindowsApplication>True</IsWindowsApplication>
+    <AssemblyName>InstalleurInscriptionOcarina</AssemblyName>
+    <Name>InstalleurInscriptionOcarina</Name>
+    <RootNamespace>InstalleurInscriptionOcarina</RootNamespace>
+    <LoadFromTemplate>
+    </LoadFromTemplate>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'DefaultBuild' " />
+  <ItemGroup>
+    <Compile Include="InstalleurInscriptionOcarina.aip">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\OcarinaInscription\OcarinaInscription.csproj">
+      <Name>OcarinaInscription</Name>
+      <Project>{9f64ee89-4757-4722-ba42-8d9555afa47e}</Project>
+      <Private>True</Private>
+      <OutputsToImport>PrimaryOutput;References;ContentOutput;SymbolsOutput</OutputsToImport>
+    </ProjectReference>
+  </ItemGroup>
+  <Target Name="Build">
+    <Error Text="This project requires Advanced Installer tool. Please download it from https://www.advancedinstaller.com/download.html" />
+  </Target>
+  <Target Name="Rebuild">
+    <Error Text="This project requires Advanced Installer tool. Please download it from https://www.advancedinstaller.com/download.html" />
+  </Target>
+  <Target Name="Clean">
+  </Target>
+  <Target Name="ResolveAssemblyReferences">
+  </Target>
+  <Import Condition="'$(AdvancedInstallerMSBuildTargets)' != ''" Project="$(AdvancedInstallerMSBuildTargets)\AdvInstExtTasks.Targets" />
+  <Import Condition="('$(AdvancedInstallerMSBuildTargets)' == '') And (Exists('$(MSBuildExtensionsPath32)\Caphyon\Advanced Installer\AdvInstExtTasks.Targets'))" Project="$(MSBuildExtensionsPath32)\Caphyon\Advanced Installer\AdvInstExtTasks.Targets" />
+</Project>
