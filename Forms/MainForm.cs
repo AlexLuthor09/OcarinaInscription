@@ -96,12 +96,12 @@ namespace OcarinaInscription
 
         private void But_Remarque_Click(object sender, EventArgs e)
         {
-            SqlManager.ExportRemarquetToExcel("REMARQUE&ALLERGIES");
+            FM.OpenExcelExport('b');
         }
 
         private void BUT_Export_to_excel_Click(object sender, EventArgs e)
         {
-            SqlManager.ExportALLToExcel("Plaine" + DateTime.Today.ToShortDateString());
+            FM.OpenExcelExport('a');
         }
     }
 }

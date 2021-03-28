@@ -12,7 +12,7 @@ namespace OcarinaInscription.Class
 {
     class ExcelManager
     {
-        public void DataToExcel(string Query,SQLiteConnection cnn, string FileName)
+        public void DataToExcel(DataSet ds, string FileName)
         {
             Excel.Application xlApp = new Microsoft.Office.Interop.Excel.Application();
 
@@ -31,28 +31,28 @@ namespace OcarinaInscription.Class
 
             xlWorkBook = xlApp.Workbooks.Add(misValue);
             xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-            string data = String.Empty;
-            int i = 0;
-            int j = 0;
             try
             {
-                cnn.Open();
-                using (SQLiteCommand cmd = new SQLiteCommand(Query, cnn))
+                foreach (DataTable table in ds.Tables)
                 {
-                    using (SQLiteDataReader rdr = cmd.ExecuteReader())
+                    //Add a new worksheet to workbook with the Datatable name
+                    Excel.Worksheet excelWorkSheet = xlWorkBook.Sheets.Add();
+                    excelWorkSheet.Name = table.TableName;
+
+                    for (int i = 1; i < table.Columns.Count + 1; i++)
                     {
-                        while (rdr.Read()) // Reading Rows
+                        excelWorkSheet.Cells[1, i] = table.Columns[i - 1].ColumnName;
+                    }
+
+                    for (int j = 0; j < table.Rows.Count; j++)
+                    {
+                        for (int k = 0; k < table.Columns.Count; k++)
                         {
-                            for (j = 0; j <= rdr.FieldCount - 1; j++) // Looping throw colums
-                            {
-                                data = rdr.GetValue(j).ToString();
-                                xlWorkSheet.Cells[i + 1, j + 1] = data;
-                            }
-                            i++;
+                            excelWorkSheet.Cells[j + 2, k + 1] = table.Rows[j].ItemArray[k].ToString();
                         }
                     }
                 }
-                cnn.Close();
+                // MessageBox.Show(" Remplissage : Terminer");
             }
             catch
             {
@@ -74,9 +74,9 @@ namespace OcarinaInscription.Class
 
                 //MessageBox.Show("Fichier Excel créer , tu peux le trouver ici : " + truc + ".xls");
             }
-            catch
+            catch(Exception ex)
             {
-                MessageBox.Show("ERROR : Le fichier n'as pas pu se sauvegarder");
+                MessageBox.Show("ERROR : Le fichier n'as pas pu se sauvegarder : "+ ex.ToString());
             }
 
         }

@@ -101,39 +101,50 @@ namespace OcarinaInscription.SQLclass
         public static void ExportALLToExcel(string FileName)
         {
             ExcelManager ExcelManager = new ExcelManager();
-            using (SQLiteConnection cnn = new SQLiteConnection(LoadConnectionString()))
-            {
-                string Query = "Select * from Enfant";
-                ExcelManager.DataToExcel(Query, cnn,FileName);
-            }
+
+            string Query = "Select * from Enfant";
+
+            ExcelManager.DataToExcel(DbToDataSet(Query), FileName);
 
         }
         public static void ExportEnfantToExcel(string FileName)
         {
-            ExcelManager ExcelManager = new ExcelManager();
-            using (SQLiteConnection cnn = new SQLiteConnection(LoadConnectionString()))
-            {
-                string Query = "SELECT Nom,Prenom,Tranche_age,Age,Date_Naissance,Email,N_Nationam,Adresse,MC,BIM,Prix,Nbr_jour,jour1,jour2,jour3,jour4,jour5 FROM Enfant";
-                ExcelManager.DataToExcel(Query, cnn, FileName);
-            }
+            ExcelManager ExcelManager = new ExcelManager();  
+            
+            string Query = "SELECT Nom,Prenom,Tranche_age,Age,Date_Naissance,Email,N_National,Adresse,MC,BIM,Prix,Nbr_jour,jour1,jour2,jour3,jour4,jour5 FROM Enfant";
 
+            ExcelManager.DataToExcel(DbToDataSet(Query), FileName);
         }
         public static void ExportRemarquetToExcel(string FileName)
         {
             ExcelManager ExcelManager = new ExcelManager();
-            using (SQLiteConnection cnn = new SQLiteConnection(LoadConnectionString()))
-            {
-                string Query = "SELECT Nom, Prenom, Remarque, Allergie FROM Enfant where Tranche_age = '";
 
-                ExcelManager.DataToExcel(Query+"Bleu", cnn, FileName);
-                ExcelManager.DataToExcel(Query + "Vert", cnn, FileName);
-                ExcelManager.DataToExcel(Query + "Jaune", cnn, FileName);
-            }
+            string Query = "SELECT Nom, Prenom, Remarque, Allergie FROM Enfant where Tranche_age = '";
+
+            ExcelManager.DataToExcel(DbToDataSet(Query + "Bleu'"), FileName + "Bleu");
+            ExcelManager.DataToExcel(DbToDataSet(Query + "Vert'"), FileName + "Vert");
+            ExcelManager.DataToExcel(DbToDataSet(Query + "Jaune'"), FileName +"Jaune");
 
         }
         private static string LoadConnectionString(string id = "Default")
         {
             return ConfigurationManager.ConnectionStrings[id].ConnectionString;
+        }
+        public static DataSet DbToDataSet(string Query)
+        {
+            using (SQLiteConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+
+                SQLiteCommand sQLiteCommand = new SQLiteCommand(Query, cnn);
+                SQLiteDataAdapter sQLiteDataAdapter = new SQLiteDataAdapter(sQLiteCommand);
+                DataSet dataSet = new DataSet();
+
+                cnn.Open();
+                sQLiteDataAdapter.Fill(dataSet);
+                cnn.Close();
+
+                return dataSet;
+            }
         }
     }
 }

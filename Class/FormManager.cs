@@ -22,6 +22,11 @@ namespace OcarinaInscription.Class
             Inscription Inscription = new Inscription(chillmodel);
             OpenForms(Inscription);
         }
+        public void OpenExcelExport(char quoi)
+        {
+            ExcelExport excel=new ExcelExport(quoi);
+            OpenForms(excel);
+        }
         public void OpenForms(Form activeform)
         {
             activeform.Activate();
