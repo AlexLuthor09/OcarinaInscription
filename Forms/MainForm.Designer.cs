@@ -208,7 +208,7 @@ namespace OcarinaInscription
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2131, 1073);
+            this.ClientSize = new System.Drawing.Size(2140, 1073);
             this.Controls.Add(this.But_NewWeek);
             this.Controls.Add(this.But_Remarque);
             this.Controls.Add(this.BUT_Export_to_excel);

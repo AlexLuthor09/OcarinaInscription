@@ -82,12 +82,13 @@ namespace OcarinaInscription
 
         private void But_Supp_Enfant_Click(object sender, EventArgs e)
         {
+            var enfatn = selectedChild();
             try
             {
                 DialogResult dialogResult = MessageBox.Show($"Es-tu sûr de vouloir supprimer ce participant  ?  ", "Supprimer", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    SqlManager.DeleteChild(selectedChild());
+                    SqlManager.DeleteChild(enfatn);
                     
                 }
             }
