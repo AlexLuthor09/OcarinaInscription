@@ -90,8 +90,6 @@ namespace OcarinaInscription.Forms
         private ChillModel getChillModel()
         {
             return ChillModel;
-
-
         }
         private void data(ChillModel chillModel)
         {
@@ -123,6 +121,14 @@ namespace OcarinaInscription.Forms
                 chillModel.Tranche_age = TA_jaune.Trim();
 
             this.ChillModel = chillModel;
+        }
+
+        private void Tb_Keypress(object sender, KeyPressEventArgs e)
+        {
+            //if (char.IsPunctuation(e.KeyChar))
+            //{
+            //    e.Handled = true;
+            //}
         }
     }
 }

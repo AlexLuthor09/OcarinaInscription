@@ -21,7 +21,8 @@ namespace OcarinaInscription
 
         public MainForm()
         {
-            try {
+            try 
+            {
                 InitializeComponent();
                 LoadEnfantList();
             }
@@ -34,17 +35,26 @@ namespace OcarinaInscription
 
         private void LoadEnfantList()
         {
+            
             childs = SqlManager.LoadChild();
             CleanListBox();
         }
 
         private void CleanListBox()
         {
+            
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = childs;
-            ComboBox_ListOfChildren.DataSource = null;
-            ComboBox_ListOfChildren.DataSource = childs;
-            ComboBox_ListOfChildren.DisplayMember = "FullName";
+            
+            dataGridView1.Columns["N_National"].Visible = false;
+            dataGridView1.Columns["Id"].Visible = false;
+            dataGridView1.Columns["Remarque"].Visible = false;
+            dataGridView1.Columns["Allergie"].Visible = false;
+            dataGridView1.Columns["Adresse"].Visible = false;
+            dataGridView1.Columns[@"Age"].Visible = false;
+            dataGridView1.Columns["Email"].Visible = false;
+            dataGridView1.Columns["Date_Naissance"].Visible = false;
+            
         }
 
 
@@ -55,7 +65,14 @@ namespace OcarinaInscription
 
         private void Butt_Modifier_Participant_Click(object sender, EventArgs e)
         {
-            FM.OpenInscription(selectedChild());
+            try
+            {
+                FM.OpenInscription(selectedChild());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Selectionné un participant \n ERROR : " + ex.ToString());
+            }
         }
 
         private void MainForm_Activated(object sender, EventArgs e)
@@ -65,7 +82,19 @@ namespace OcarinaInscription
 
         private void But_Supp_Enfant_Click(object sender, EventArgs e)
         {
-            SqlManager.DeleteChild(selectedChild());
+            try
+            {
+                DialogResult dialogResult = MessageBox.Show($"Es-tu sûr de vouloir supprimer ce participant  ?  ", "Supprimer", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    SqlManager.DeleteChild(selectedChild());
+                    
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Selectionné un participant \n ERROR : "+ ex.ToString());
+            }
             LoadEnfantList();
         }
 
@@ -75,13 +104,20 @@ namespace OcarinaInscription
         }
         private ChillModel selectedChild()
         {
-            return dataGridView1.CurrentRow.DataBoundItem as ChillModel;
+             return this.dataGridView1.CurrentRow.DataBoundItem  as ChillModel;
         }
 
         private void But_apayer_Click(object sender, EventArgs e)
         {
-            SqlManager.ChildHavePaid(selectedChild(),dateTimePicker1.Value.DayOfWeek);
-            LoadEnfantList();
+            try
+            {
+                SqlManager.ChildHavePaid(selectedChild(),dateTimePicker1.Value.DayOfWeek);
+                LoadEnfantList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Selectionné un participant \n ERROR : " + ex.ToString());
+            }
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -102,6 +138,23 @@ namespace OcarinaInscription
         private void BUT_Export_to_excel_Click(object sender, EventArgs e)
         {
             FM.OpenExcelExport('a');
+        }
+
+        private void But_NewWeek_Click(object sender, EventArgs e)
+        {
+            
+            DialogResult dialogResult = MessageBox.Show("Es-tu sûr de vouloir commencer une nouvelle semaine ? \n Si oui , la base de donées va être réinitialisez.", "Nouvelle semaine", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                SqlManager.NewWeek();
+                LoadEnfantList();
+            }
+            
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

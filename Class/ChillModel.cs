@@ -24,19 +24,11 @@ namespace OcarinaInscription.Class
         public string Remarque{ get; set; }
         public string Allergie{ get; set; }
         public string Adresse { get; set; }
-        public bool jour1{ get; set; }
-        public bool jour2 { get; set; }
-        public bool jour3 { get; set; }
-        public bool jour4 { get; set; }
-        public bool jour5 { get; set; }
-
-        public string FullName
-        {
-            get
-            {
-                return $"{Nom} {Prenom}";
-            }
-        }
+        public bool Lundi{ get; set; }
+        public bool Mardi { get; set; }
+        public bool Mercredi { get; set; }
+        public bool Jeudi { get; set; }
+        public bool Vendredi { get; set; }
 
     }
 }

@@ -19,7 +19,7 @@ namespace OcarinaInscription.SQLclass
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                var output = cnn.Query<ChillModel>("select * from Enfant", new DynamicParameters());
+                var output = cnn.Query<ChillModel>("select * From Enfant", new DynamicParameters());
                 return output.ToList();
             }
         }
@@ -49,9 +49,19 @@ namespace OcarinaInscription.SQLclass
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                string Query = "DELETE from Enfant where ID = @ID";
+                string Query = $"DELETE from Enfant where ID = {child.Id}";
 
                 cnn.Execute(Query, child);
+            }
+        }
+        public static void NewWeek()
+        {
+            
+            using (SQLiteConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                string Query = @"DELETE FROM  Enfant";
+
+                cnn.Execute(Query);
             }
         }
         public static void ChildHavePaid(ChillModel child,DayOfWeek date)
@@ -59,35 +69,56 @@ namespace OcarinaInscription.SQLclass
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
                
-                int jour=0;
-                bool yesornot = false;
+                
+                string Query="";
+                int o = child.Nbr_jour;
+                
                 switch (date)
                 {
                     case DayOfWeek.Monday:
-                        jour = 1;
-                        child.jour1= yesornot = !child.jour1;
+                        if (child.Lundi=!child.Lundi)
+                            child.Nbr_jour =  o + 1;
+                        else
+                            child.Nbr_jour = o - 1;
+                         Query = @"UPDATE Enfant SET Lundi = @LUNDI, Nbr_Jour = @Nbr_jour where ID = @ID";
                         break;
                     case DayOfWeek.Tuesday:
-                        jour = 2;
-                        child.jour2 = yesornot = !child.jour2;
+                        if (child.Mardi=!child.Mardi)
+                            child.Nbr_jour = o + 1;
+                        else
+                            child.Nbr_jour = o - 1;
+                        Query =@"UPDATE Enfant SET Mardi =@MARDI,  Nbr_Jour = @Nbr_jour where ID = @ID";
                         break;
                     case DayOfWeek.Wednesday:
-                        jour = 3;
-                        child.jour3 = yesornot = !child.jour3;
+                        if (child.Mercredi=!child.Mercredi)
+                            child.Nbr_jour = o + 1;
+                        else
+                            child.Nbr_jour = o - 1;
+                        Query = @"UPDATE Enfant SET Mercredi =@MERCREDI, Nbr_Jour = @Nbr_jour where ID = @ID";
                         break;
                     case DayOfWeek.Thursday:
-                        jour = 4;
-                        child.jour4 = yesornot = !child.jour4;
+                        if (child.Jeudi = !child.Jeudi)
+                            child.Nbr_jour = o + 1;
+                        else
+                            child.Nbr_jour = o - 1;
+                        Query = @"UPDATE Enfant SET Jeudi =@JEUDI, Nbr_Jour = @Nbr_jour where ID = @ID";
                         break;
                     case DayOfWeek.Friday:
-                        jour = 5;
-                        child.jour5 = yesornot = !child.jour5;
+                        if (child.Vendredi = !child.Vendredi)
+                            child.Nbr_jour = o + 1;
+                        else
+                            child.Nbr_jour = o - 1;
+                        Query = @"UPDATE Enfant SET Vendredi =@VENDREDI, Nbr_Jour = @Nbr_jour where ID = @ID";
                         break;
+                    default:
+                        Query = null;
+                        break;
+                      
                 }
                 
                 try 
                 { 
-                    string Query = $"UPDATE Enfant SET jour{jour} ='{yesornot}' where ID = @ID";
+
                     cnn.Execute(Query, child);
                 }
                 catch(Exception ex)
@@ -111,7 +142,7 @@ namespace OcarinaInscription.SQLclass
         {
             ExcelManager ExcelManager = new ExcelManager();  
             
-            string Query = "SELECT Nom,Prenom,Tranche_age,Age,Date_Naissance,Email,N_National,Adresse,MC,BIM,Prix,Nbr_jour,jour1,jour2,jour3,jour4,jour5 FROM Enfant";
+            string Query = "SELECT Nom,Prenom,Tranche_age,Age,Date_Naissance,Email,N_National,Adresse,Fiche_Sante,MC,BIM,Prix,Nbr_jour,Lundi,Mardi,Mercredi,Jeudi,Vendredi FROM Enfant";
 
             ExcelManager.DataToExcel(DbToDataSet(Query), FileName);
         }

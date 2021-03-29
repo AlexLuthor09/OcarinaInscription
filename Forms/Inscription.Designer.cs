@@ -143,6 +143,7 @@ namespace OcarinaInscription.Forms
             this.TB_Adresse.Name = "TB_Adresse";
             this.TB_Adresse.Size = new System.Drawing.Size(525, 30);
             this.TB_Adresse.TabIndex = 41;
+            this.TB_Adresse.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Tb_Keypress);
             // 
             // TB_N_National
             // 
@@ -183,6 +184,7 @@ namespace OcarinaInscription.Forms
             this.TB_Email.Name = "TB_Email";
             this.TB_Email.Size = new System.Drawing.Size(525, 30);
             this.TB_Email.TabIndex = 37;
+            this.TB_Email.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Tb_Keypress);
             // 
             // label6
             // 
@@ -215,6 +217,7 @@ namespace OcarinaInscription.Forms
             this.TB_Allergies.Name = "TB_Allergies";
             this.TB_Allergies.Size = new System.Drawing.Size(522, 407);
             this.TB_Allergies.TabIndex = 34;
+            this.TB_Allergies.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Tb_Keypress);
             // 
             // label5
             // 
@@ -236,6 +239,7 @@ namespace OcarinaInscription.Forms
             this.TB_Remarques.Name = "TB_Remarques";
             this.TB_Remarques.Size = new System.Drawing.Size(642, 812);
             this.TB_Remarques.TabIndex = 32;
+            this.TB_Remarques.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Tb_Keypress);
             // 
             // label4
             // 
@@ -270,6 +274,7 @@ namespace OcarinaInscription.Forms
             this.TB_Firstname.Name = "TB_Firstname";
             this.TB_Firstname.Size = new System.Drawing.Size(525, 30);
             this.TB_Firstname.TabIndex = 29;
+            this.TB_Firstname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Tb_Keypress);
             // 
             // TB_Name
             // 
@@ -279,6 +284,7 @@ namespace OcarinaInscription.Forms
             this.TB_Name.Name = "TB_Name";
             this.TB_Name.Size = new System.Drawing.Size(525, 30);
             this.TB_Name.TabIndex = 28;
+            this.TB_Name.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Tb_Keypress);
             // 
             // label2
             // 
