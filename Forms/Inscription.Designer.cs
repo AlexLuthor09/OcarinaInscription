@@ -337,6 +337,7 @@ namespace OcarinaInscription.Forms
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Inscription";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inscription";
             ((System.ComponentModel.ISupportInitialize)(this.NUD_Age)).EndInit();
             this.ResumeLayout(false);

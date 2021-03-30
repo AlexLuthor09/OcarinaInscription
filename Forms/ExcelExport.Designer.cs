@@ -155,6 +155,7 @@ namespace OcarinaInscription
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.OpenExistanteFile);
             this.Name = "ExcelExport";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ExcelExport";
             this.ResumeLayout(false);
             this.PerformLayout();
