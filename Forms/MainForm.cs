@@ -60,7 +60,7 @@ namespace OcarinaInscription
 
         private void Butt_Add_Children_Click(object sender, EventArgs e)
         {
-            FM.OpenInscription();
+            FM.OpenInscription();           
         }
 
         private void Butt_Modifier_Participant_Click(object sender, EventArgs e)
