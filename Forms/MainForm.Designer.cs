@@ -43,6 +43,8 @@ namespace OcarinaInscription
             this.Butt_Add_Children = new System.Windows.Forms.Button();
             this.But_apayer = new System.Windows.Forms.Button();
             this.But_NewWeek = new System.Windows.Forms.Button();
+            this.Combox_plaines = new System.Windows.Forms.ComboBox();
+            this.But_modifweek = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -218,12 +220,38 @@ namespace OcarinaInscription
             this.But_NewWeek.UseVisualStyleBackColor = false;
             this.But_NewWeek.Click += new System.EventHandler(this.But_NewWeek_Click);
             // 
+            // Combox_plaines
+            // 
+            this.Combox_plaines.FormattingEnabled = true;
+            this.Combox_plaines.Location = new System.Drawing.Point(19, 54);
+            this.Combox_plaines.Name = "Combox_plaines";
+            this.Combox_plaines.Size = new System.Drawing.Size(348, 24);
+            this.Combox_plaines.TabIndex = 34;
+            this.Combox_plaines.SelectedIndexChanged += new System.EventHandler(this.Combox_plaines_SelectedIndexChanged);
+            // 
+            // But_modifweek
+            // 
+            this.But_modifweek.AutoSize = true;
+            this.But_modifweek.BackColor = System.Drawing.Color.Maroon;
+            this.But_modifweek.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.But_modifweek.ForeColor = System.Drawing.Color.White;
+            this.But_modifweek.Location = new System.Drawing.Point(1415, 5);
+            this.But_modifweek.Margin = new System.Windows.Forms.Padding(4);
+            this.But_modifweek.Name = "But_modifweek";
+            this.But_modifweek.Size = new System.Drawing.Size(217, 82);
+            this.But_modifweek.TabIndex = 35;
+            this.But_modifweek.Text = "Modifier Semaine";
+            this.But_modifweek.UseVisualStyleBackColor = false;
+            this.But_modifweek.Click += new System.EventHandler(this.But_modifweek_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1661, 915);
+            this.Controls.Add(this.But_modifweek);
+            this.Controls.Add(this.Combox_plaines);
             this.Controls.Add(this.But_NewWeek);
             this.Controls.Add(this.But_Remarque);
             this.Controls.Add(this.BUT_Export_to_excel);
@@ -266,6 +294,8 @@ namespace OcarinaInscription
         private System.Windows.Forms.Button Butt_Add_Children;
         private System.Windows.Forms.Button But_apayer;
         private System.Windows.Forms.Button But_NewWeek;
+        private System.Windows.Forms.ComboBox Combox_plaines;
+        private System.Windows.Forms.Button But_modifweek;
     }
 }
 

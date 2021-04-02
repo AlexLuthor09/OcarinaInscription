@@ -23,6 +23,14 @@ namespace OcarinaInscription.SQLclass
                 return output.ToList();
             }
         }
+        public static List<PlaineModel> LoadPlaines()
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                var output = cnn.Query<PlaineModel>("select * From Plaine", new DynamicParameters());
+                return output.ToList();
+            }
+        }
 
         public static void SaveChild(ChillModel child)
         {
@@ -45,6 +53,39 @@ namespace OcarinaInscription.SQLclass
                 cnn.Execute(Query, child);
             }
         }
+
+
+        public static void UpdatePlaine(PlaineModel plaineModel)
+        {
+
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                string Query = @"UPDATE Plaine  SET Nom = @NOM, DateDebut=@DATEDEBUT, DateFin=@DATEFIN" +
+                 " Where Id = @ID;";
+
+                cnn.Execute(Query, plaineModel);
+            }
+        }
+
+        public static void SavePlaine(PlaineModel plaineModel)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                string Query = @"INSERT INTO Plaine  (Nom,DateDebut,DateFin)" +
+                "values (@NOM,@DATEDEBUT,@DATEFIN)";
+
+                cnn.Execute(Query, plaineModel);
+            }
+        }
+        internal static void DeletePlaine(PlaineModel plaine)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                string Query = $"DELETE from Plaine where ID = {plaine.Id}";
+
+                cnn.Execute(Query, plaine);
+            }
+        }
         public static void DeleteChild(ChillModel child)
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
@@ -54,14 +95,14 @@ namespace OcarinaInscription.SQLclass
                 cnn.Execute(Query, child);
             }
         }
-        public static void NewWeek()
+        public static void NewWeek(PlaineModel plaineModel)
         {
             
             using (SQLiteConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                string Query = @"DELETE FROM  Enfant";
+                string Query = @"Insert into Plaine (Nom,DateDebut,DateFin) values (@NOM,@DATEDEBUT,@DATEFIN)";
 
-                cnn.Execute(Query);
+                cnn.Execute(Query,plaineModel);
             }
         }
         public static void ChildHavePaid(ChillModel child,DayOfWeek date)
