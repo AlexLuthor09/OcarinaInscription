@@ -11,14 +11,14 @@ namespace OcarinaInscription.Class
     class FormManager
     {
 
-        public void OpenInscription(PlaineModel plaine)
+        public void OpenInscription(int id)
         {
-            Inscription Inscription = new Inscription(plaine);
+            Inscription Inscription = new Inscription(id);
             OpenForms(Inscription);
         }
-        public void OpenInscription(ChillModel chillmodel, PlaineModel plaine)
+        public void OpenInscription(ChillModel chillmodel)
         {
-            Inscription Inscription = new Inscription(chillmodel, plaine);
+            Inscription Inscription = new Inscription(chillmodel);
             OpenForms(Inscription);
         }
         public void OpenExcelExport(char quoi)
@@ -30,6 +30,11 @@ namespace OcarinaInscription.Class
         {
             Newweek newweek = new Newweek();
             OpenForms(newweek);
+        }
+        public void OpenWeekChoise(MainForm mainForm)
+        {
+            WeekChoise weekChoise = new WeekChoise(mainForm);
+            OpenForms(weekChoise);
         }
         public void OpenNewWeek(PlaineModel plaine)
         {

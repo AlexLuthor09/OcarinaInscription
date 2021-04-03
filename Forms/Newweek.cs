@@ -16,11 +16,14 @@ namespace OcarinaInscription.Forms
     {
         private PlaineModel plaines;
         private bool modif=false;
-
+        
         public Newweek()
         {
+            
             InitializeComponent();
+            
         }
+
 
         public Newweek(PlaineModel plaine)
         {
@@ -74,10 +77,5 @@ namespace OcarinaInscription.Forms
             return plaines;
         }
 
-        private void But_supp_Click(object sender, EventArgs e)
-        {
-            SqlManager.DeletePlaine(plaines);
-            this.Close();
-        }
     }
 }

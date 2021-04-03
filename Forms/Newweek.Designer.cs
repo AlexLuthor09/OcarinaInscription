@@ -36,7 +36,6 @@ namespace OcarinaInscription.Forms
             this.DTP_Start = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.TB_NomPlaine = new System.Windows.Forms.TextBox();
-            this.But_supp = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // But_Validation
@@ -104,23 +103,11 @@ namespace OcarinaInscription.Forms
             this.TB_NomPlaine.Size = new System.Drawing.Size(572, 39);
             this.TB_NomPlaine.TabIndex = 21;
             // 
-            // But_supp
-            // 
-            this.But_supp.Font = new System.Drawing.Font("Arial", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.But_supp.Location = new System.Drawing.Point(590, 12);
-            this.But_supp.Name = "But_supp";
-            this.But_supp.Size = new System.Drawing.Size(172, 88);
-            this.But_supp.TabIndex = 28;
-            this.But_supp.Text = "Supprimer";
-            this.But_supp.UseVisualStyleBackColor = true;
-            this.But_supp.Click += new System.EventHandler(this.But_supp_Click);
-            // 
             // Newweek
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(774, 253);
-            this.Controls.Add(this.But_supp);
             this.Controls.Add(this.But_Validation);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -144,6 +131,5 @@ namespace OcarinaInscription.Forms
         private System.Windows.Forms.DateTimePicker DTP_Start;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox TB_NomPlaine;
-        private System.Windows.Forms.Button But_supp;
     }
 }
