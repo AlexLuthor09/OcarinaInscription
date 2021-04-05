@@ -95,9 +95,10 @@ namespace OcarinaInscription.SQLclass
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                string Query = $"DELETE from Plaine where ID = {plaine.Id}";
-
-                cnn.Execute(Query, plaine);
+                string Query1 = $"DELETE from Enfant where PlaineID = {plaine.Id}";
+                string Query2 = $"DELETE from Plaine where ID = {plaine.Id}";
+                cnn.Execute(Query1);
+                cnn.Execute(Query2);
             }
         }
         public static void DeleteChild(ChillModel child)
@@ -184,28 +185,28 @@ namespace OcarinaInscription.SQLclass
                 
             }
         }
-        public static void ExportALLToExcel(string FileName)
+        public static void ExportALLToExcel(string FileName,int plaine)
         {
             ExcelManager ExcelManager = new ExcelManager();
 
-            string Query = "Select * from Enfant";
+            string Query = $"Select * from Enfant Where PlaineID ={plaine}";
 
             ExcelManager.DataToExcel(DbToDataSet(Query), FileName);
 
         }
-        public static void ExportEnfantToExcel(string FileName)
+        public static void ExportEnfantToExcel(string FileName,int plaine)
         {
             ExcelManager ExcelManager = new ExcelManager();  
             
-            string Query = "SELECT Nom,Prenom,Tranche_age,Age,Date_Naissance,Email,N_National,Adresse,Fiche_Sante,MC,BIM,Prix,Nbr_jour,Lundi,Mardi,Mercredi,Jeudi,Vendredi FROM Enfant";
+            string Query = $"SELECT Nom,Prenom,Tranche_age,Age,Date_Naissance,Email,N_National,Adresse,Fiche_Sante,MC,BIM,Prix,Nbr_jour,Lundi,Mardi,Mercredi,Jeudi,Vendredi FROM Enfant Where PlaineID ={plaine} ";
 
             ExcelManager.DataToExcel(DbToDataSet(Query), FileName);
         }
-        public static void ExportRemarquetToExcel(string FileName)
+        public static void ExportRemarquetToExcel(string FileName,int plaine)
         {
             ExcelManager ExcelManager = new ExcelManager();
 
-            string Query = "SELECT Nom, Prenom, Remarque, Allergie FROM Enfant where Tranche_age = '";
+            string Query = $"SELECT Nom, Prenom, Remarque, Allergie FROM Enfant where Tranche_age = Where PlaineID ={plaine}";
 
             ExcelManager.DataToExcel(DbToDataSet(Query + "Bleu'"), FileName + "Bleu");
             ExcelManager.DataToExcel(DbToDataSet(Query + "Vert'"), FileName + "Vert");
