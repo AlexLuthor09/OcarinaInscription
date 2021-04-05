@@ -29,6 +29,6 @@ namespace OcarinaInscription.Class
         public bool Mercredi { get; set; }
         public bool Jeudi { get; set; }
         public bool Vendredi { get; set; }
-
+        public int PlaineId { get; set; }
     }
 }

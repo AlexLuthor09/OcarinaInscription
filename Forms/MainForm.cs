@@ -19,48 +19,48 @@ namespace OcarinaInscription
         FormManager FM = new FormManager();
         SqlManager SqlManager = new SqlManager();
 
+        public int CurrentPlaineID;
+
         public MainForm()
         {
-            try 
+            try
             {
                 InitializeComponent();
-                LoadEnfantList();
+                LoadDBToList();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-            
         }
-
-        private void LoadEnfantList()
+        public void LoadDBToList()
         {
-            
-            childs = SqlManager.LoadChild();
-            CleanListBox();
+           
+            LoadEnfantToList();
         }
-
-        private void CleanListBox()
+       
+        private void LoadEnfantToList()
         {
-            
+            childs = SqlManager.LoadChild(CurrentPlaineID);
+
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = childs;
-            
+
             dataGridView1.Columns["N_National"].Visible = false;
             dataGridView1.Columns["Id"].Visible = false;
+            //dataGridView1.Columns["PlaineId"].Visible = false;
             dataGridView1.Columns["Remarque"].Visible = false;
             dataGridView1.Columns["Allergie"].Visible = false;
             dataGridView1.Columns["Adresse"].Visible = false;
             dataGridView1.Columns[@"Age"].Visible = false;
             dataGridView1.Columns["Email"].Visible = false;
             dataGridView1.Columns["Date_Naissance"].Visible = false;
-            
-        }
 
+        }
 
         private void Butt_Add_Children_Click(object sender, EventArgs e)
         {
-            FM.OpenInscription();           
+            FM.OpenInscription(CurrentPlaineID);
         }
 
         private void Butt_Modifier_Participant_Click(object sender, EventArgs e)
@@ -77,7 +77,7 @@ namespace OcarinaInscription
 
         private void MainForm_Activated(object sender, EventArgs e)
         {
-            LoadEnfantList();
+            LoadDBToList();
         }
 
         private void But_Supp_Enfant_Click(object sender, EventArgs e)
@@ -89,14 +89,14 @@ namespace OcarinaInscription
                 if (dialogResult == DialogResult.Yes)
                 {
                     SqlManager.DeleteChild(enfatn);
-                    
+
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show("Selectionné un participant \n ERROR : "+ ex.ToString());
+                MessageBox.Show("Selectionné un participant \n ERROR : " + ex.ToString());
             }
-            LoadEnfantList();
+            LoadEnfantToList();
         }
 
         private void BUT_Quitter_Click(object sender, EventArgs e)
@@ -105,15 +105,15 @@ namespace OcarinaInscription
         }
         private ChillModel selectedChild()
         {
-             return this.dataGridView1.CurrentRow.DataBoundItem  as ChillModel;
+            return this.dataGridView1.CurrentRow.DataBoundItem as ChillModel;
         }
 
         private void But_apayer_Click(object sender, EventArgs e)
         {
             try
             {
-                SqlManager.ChildHavePaid(selectedChild(),dateTimePicker1.Value.DayOfWeek);
-                LoadEnfantList();
+                SqlManager.ChildHavePaid(selectedChild(), dateTimePicker1.Value.DayOfWeek);
+                LoadEnfantToList();
             }
             catch (Exception ex)
             {
@@ -121,14 +121,9 @@ namespace OcarinaInscription
             }
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            LoadEnfantList();
-        }
-
         private void BUT_Refresh_Click(object sender, EventArgs e)
         {
-            LoadEnfantList();
+            LoadEnfantToList();
         }
 
         private void But_Remarque_Click(object sender, EventArgs e)
@@ -141,21 +136,11 @@ namespace OcarinaInscription
             FM.OpenExcelExport('a');
         }
 
-        private void But_NewWeek_Click(object sender, EventArgs e)
-        {
-            
-            DialogResult dialogResult = MessageBox.Show("Es-tu sûr de vouloir commencer une nouvelle semaine ? \n Si oui , la base de donées va être réinitialisez.", "Nouvelle semaine", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                SqlManager.NewWeek();
-                LoadEnfantList();
-            }
-            
-        }
+       
 
-        private void label2_Click(object sender, EventArgs e)
+        private void But_changeWEEK_Click(object sender, EventArgs e)
         {
-
+            FM.OpenWeekChoise(this);
         }
     }
 }

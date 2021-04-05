@@ -18,9 +18,12 @@ namespace OcarinaInscription.Forms
         string TA_bleu = "Bleu";
         string TA_vert = "Vert";
         string TA_jaune = "Jaune";
-        public Inscription()
+        private int IDPLAINE;
+        public Inscription(int id)
         {
             InitializeComponent();
+            this.IDPLAINE = id;
+           
         }
         public Inscription(ChillModel chillModel)
         {
@@ -119,6 +122,8 @@ namespace OcarinaInscription.Forms
                 chillModel.Tranche_age = TA_vert.Trim();
             if (chillModel.Age < 6)
                 chillModel.Tranche_age = TA_jaune.Trim();
+
+            chillModel.PlaineId = this.IDPLAINE;
 
             this.ChillModel = chillModel;
         }

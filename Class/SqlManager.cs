@@ -14,12 +14,34 @@ namespace OcarinaInscription.SQLclass
 {
     public class SqlManager
     {
-        
-        public static List<ChillModel> LoadChild()
+       
+        public static List<ChillModel> LoadChild(int IDplaines)
+        {
+            if(IDplaines == null)
+            {
+                using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    var output = cnn.Query<ChillModel>("select * From Enfant", new DynamicParameters());
+                    return output.ToList();
+                } 
+            }
+            else
+            { 
+                using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                {
+                var output = cnn.Query<ChillModel>($"select * From Enfant where PlaineID = {IDplaines}", new DynamicParameters());
+                return output.ToList();
+                
+                }
+            }
+
+            
+        }
+        public static List<PlaineModel> LoadPlaines()
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                var output = cnn.Query<ChillModel>("select * From Enfant", new DynamicParameters());
+                var output = cnn.Query<PlaineModel>("select * From Plaine", new DynamicParameters());
                 return output.ToList();
             }
         }
@@ -28,8 +50,8 @@ namespace OcarinaInscription.SQLclass
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                string Query = @"INSERT INTO Enfant  (Nom,Prenom,Email,N_National,Date_Naissance,Age,Tranche_age,MC,BIM,Fiche_Sante,Remarque,Allergie,Adresse,Prix,Nbr_Jour)" +
-                "values (@NOM,@PRENOM,@EMAIL,@N_NATIONAL,@DATE_NAISSANCE,@AGE,@TRANCHE_AGE,@MC,@BIM,@FICHE_SANTE,@REMARQUE,@ALLERGIE,@ADRESSE,@PRIX,@NBR_JOUR)";
+                string Query = @"INSERT INTO Enfant  (Nom,Prenom,Email,N_National,Date_Naissance,Age,Tranche_age,MC,BIM,Fiche_Sante,Remarque,Allergie,Adresse,Prix,Nbr_Jour,PlaineID)" +
+                "values (@NOM,@PRENOM,@EMAIL,@N_NATIONAL,@DATE_NAISSANCE,@AGE,@TRANCHE_AGE,@MC,@BIM,@FICHE_SANTE,@REMARQUE,@ALLERGIE,@ADRESSE,@PRIX,@NBR_JOUR,@PlaineID)";
                
                 cnn.Execute(Query,child);
             }
@@ -39,10 +61,43 @@ namespace OcarinaInscription.SQLclass
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
                 string Query = @"UPDATE Enfant  SET Nom = @NOM,Prenom= @PRENOM,Email= @EMAIL,N_National = @N_NATIONAL,Date_Naissance = @DATE_NAISSANCE,Age = @AGE,Tranche_age= @TRANCHE_AGE,
-                   MC =@MC,BIM= @BIM,Fiche_Sante =@FICHE_SANTE,Remarque = @REMARQUE,Allergie=@ALLERGIE,Adresse=@ADRESSE,Prix=@PRIX" +
+                   MC =@MC,BIM= @BIM,Fiche_Sante =@FICHE_SANTE,Remarque = @REMARQUE,Allergie=@ALLERGIE,Adresse=@ADRESSE,Prix=@PRIX,PlaineID=@PlaineID" +
                  " Where Id = @ID;";
 
                 cnn.Execute(Query, child);
+            }
+        }
+
+
+        public static void UpdatePlaine(PlaineModel plaineModel)
+        {
+
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                string Query = @"UPDATE Plaine  SET Nom = @NOM, DateDebut=@DATEDEBUT, DateFin=@DATEFIN" +
+                 " Where Id = @ID;";
+
+                cnn.Execute(Query, plaineModel);
+            }
+        }
+
+        public static void SavePlaine(PlaineModel plaineModel)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                string Query = @"INSERT INTO Plaine  (Nom,DateDebut,DateFin)" +
+                "values (@NOM,@DATEDEBUT,@DATEFIN)";
+
+                cnn.Execute(Query, plaineModel);
+            }
+        }
+        internal static void DeletePlaine(PlaineModel plaine)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                string Query = $"DELETE from Plaine where ID = {plaine.Id}";
+
+                cnn.Execute(Query, plaine);
             }
         }
         public static void DeleteChild(ChillModel child)
@@ -54,14 +109,14 @@ namespace OcarinaInscription.SQLclass
                 cnn.Execute(Query, child);
             }
         }
-        public static void NewWeek()
+        public static void NewWeek(PlaineModel plaineModel)
         {
             
             using (SQLiteConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                string Query = @"DELETE FROM  Enfant";
+                string Query = @"Insert into Plaine (Nom,DateDebut,DateFin) values (@NOM,@DATEDEBUT,@DATEFIN)";
 
-                cnn.Execute(Query);
+                cnn.Execute(Query,plaineModel);
             }
         }
         public static void ChildHavePaid(ChillModel child,DayOfWeek date)

@@ -42,7 +42,7 @@ namespace OcarinaInscription
             this.label1 = new System.Windows.Forms.Label();
             this.Butt_Add_Children = new System.Windows.Forms.Button();
             this.But_apayer = new System.Windows.Forms.Button();
-            this.But_NewWeek = new System.Windows.Forms.Button();
+            this.But_changeWEEK = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -109,7 +109,6 @@ namespace OcarinaInscription
             this.label2.Size = new System.Drawing.Size(73, 32);
             this.label2.TabIndex = 27;
             this.label2.Text = "Date";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // dateTimePicker1
             // 
@@ -124,7 +123,7 @@ namespace OcarinaInscription
             // 
             this.But_Supp_Enfant.AutoSize = true;
             this.But_Supp_Enfant.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.But_Supp_Enfant.Location = new System.Drawing.Point(1441, 315);
+            this.But_Supp_Enfant.Location = new System.Drawing.Point(1441, 354);
             this.But_Supp_Enfant.Margin = new System.Windows.Forms.Padding(4);
             this.But_Supp_Enfant.Name = "But_Supp_Enfant";
             this.But_Supp_Enfant.Size = new System.Drawing.Size(217, 102);
@@ -157,7 +156,7 @@ namespace OcarinaInscription
             // 
             this.Butt_Modifier_Participant.AutoSize = true;
             this.Butt_Modifier_Participant.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Butt_Modifier_Participant.Location = new System.Drawing.Point(1441, 205);
+            this.Butt_Modifier_Participant.Location = new System.Drawing.Point(1439, 244);
             this.Butt_Modifier_Participant.Margin = new System.Windows.Forms.Padding(4);
             this.Butt_Modifier_Participant.Name = "Butt_Modifier_Participant";
             this.Butt_Modifier_Participant.Size = new System.Drawing.Size(217, 102);
@@ -181,7 +180,7 @@ namespace OcarinaInscription
             // 
             this.Butt_Add_Children.AutoSize = true;
             this.Butt_Add_Children.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Butt_Add_Children.Location = new System.Drawing.Point(1443, 95);
+            this.Butt_Add_Children.Location = new System.Drawing.Point(1439, 134);
             this.Butt_Add_Children.Margin = new System.Windows.Forms.Padding(4);
             this.Butt_Add_Children.Name = "Butt_Add_Children";
             this.Butt_Add_Children.Size = new System.Drawing.Size(217, 102);
@@ -203,20 +202,20 @@ namespace OcarinaInscription
             this.But_apayer.UseVisualStyleBackColor = true;
             this.But_apayer.Click += new System.EventHandler(this.But_apayer_Click);
             // 
-            // But_NewWeek
+            // But_changeWEEK
             // 
-            this.But_NewWeek.AutoSize = true;
-            this.But_NewWeek.BackColor = System.Drawing.Color.Maroon;
-            this.But_NewWeek.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.But_NewWeek.ForeColor = System.Drawing.Color.White;
-            this.But_NewWeek.Location = new System.Drawing.Point(1190, 9);
-            this.But_NewWeek.Margin = new System.Windows.Forms.Padding(4);
-            this.But_NewWeek.Name = "But_NewWeek";
-            this.But_NewWeek.Size = new System.Drawing.Size(217, 82);
-            this.But_NewWeek.TabIndex = 33;
-            this.But_NewWeek.Text = "Nouvelle Semaine";
-            this.But_NewWeek.UseVisualStyleBackColor = false;
-            this.But_NewWeek.Click += new System.EventHandler(this.But_NewWeek_Click);
+            this.But_changeWEEK.AutoSize = true;
+            this.But_changeWEEK.BackColor = System.Drawing.Color.Maroon;
+            this.But_changeWEEK.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.But_changeWEEK.ForeColor = System.Drawing.Color.White;
+            this.But_changeWEEK.Location = new System.Drawing.Point(1431, 9);
+            this.But_changeWEEK.Margin = new System.Windows.Forms.Padding(4);
+            this.But_changeWEEK.Name = "But_changeWEEK";
+            this.But_changeWEEK.Size = new System.Drawing.Size(217, 82);
+            this.But_changeWEEK.TabIndex = 37;
+            this.But_changeWEEK.Text = "Changer de Semaine";
+            this.But_changeWEEK.UseVisualStyleBackColor = false;
+            this.But_changeWEEK.Click += new System.EventHandler(this.But_changeWEEK_Click);
             // 
             // MainForm
             // 
@@ -224,7 +223,7 @@ namespace OcarinaInscription
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1661, 915);
-            this.Controls.Add(this.But_NewWeek);
+            this.Controls.Add(this.But_changeWEEK);
             this.Controls.Add(this.But_Remarque);
             this.Controls.Add(this.BUT_Export_to_excel);
             this.Controls.Add(this.BUT_Quitter);
@@ -265,7 +264,7 @@ namespace OcarinaInscription
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button Butt_Add_Children;
         private System.Windows.Forms.Button But_apayer;
-        private System.Windows.Forms.Button But_NewWeek;
+        private System.Windows.Forms.Button But_changeWEEK;
     }
 }
 
