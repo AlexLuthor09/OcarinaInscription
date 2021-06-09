@@ -73,7 +73,7 @@ namespace OcarinaInscription.Forms
             this.But_supp.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.But_supp.ForeColor = System.Drawing.Color.Transparent;
             this.But_supp.Location = new System.Drawing.Point(428, 156);
-            this.But_supp.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.But_supp.Margin = new System.Windows.Forms.Padding(2);
             this.But_supp.Name = "But_supp";
             this.But_supp.Size = new System.Drawing.Size(163, 72);
             this.But_supp.TabIndex = 38;
@@ -83,9 +83,10 @@ namespace OcarinaInscription.Forms
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(9, 84);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
@@ -127,7 +128,7 @@ namespace OcarinaInscription.Forms
             this.Controls.Add(this.But_modifweek);
             this.Controls.Add(this.But_NewWeek);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "WeekChoise";

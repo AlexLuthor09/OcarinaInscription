@@ -37,6 +37,31 @@ namespace OcarinaInscription.SQLclass
 
             
         }
+
+        public static List<ChillModel> LoadChild()
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                var output = cnn.Query<ChillModel>("select * From Enfant", new DynamicParameters());
+                return output.ToList();
+            }
+        }
+        public static List<string> LoadChildName()
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                var output = cnn.Query<string>(@"select Nom From Enfant", new DynamicParameters());
+                return output.ToList();
+            }
+        }
+        public static List<string> LoadChildFirstName()
+        {
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                var output = cnn.Query<string>(@"select Prenom From Enfant", new DynamicParameters());
+                return output.ToList();
+            }
+        }
         public static List<PlaineModel> LoadPlaines()
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))

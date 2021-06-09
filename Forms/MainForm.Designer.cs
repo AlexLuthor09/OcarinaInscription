@@ -50,9 +50,9 @@ namespace OcarinaInscription
             // 
             this.But_Remarque.AutoSize = true;
             this.But_Remarque.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.But_Remarque.Location = new System.Drawing.Point(1081, 404);
+            this.But_Remarque.Location = new System.Drawing.Point(1060, 414);
             this.But_Remarque.Name = "But_Remarque";
-            this.But_Remarque.Size = new System.Drawing.Size(171, 67);
+            this.But_Remarque.Size = new System.Drawing.Size(180, 85);
             this.But_Remarque.TabIndex = 31;
             this.But_Remarque.Text = "Remarques / Allergies";
             this.But_Remarque.UseVisualStyleBackColor = true;
@@ -62,9 +62,9 @@ namespace OcarinaInscription
             // 
             this.BUT_Export_to_excel.AutoSize = true;
             this.BUT_Export_to_excel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BUT_Export_to_excel.Location = new System.Drawing.Point(1081, 477);
+            this.BUT_Export_to_excel.Location = new System.Drawing.Point(1060, 505);
             this.BUT_Export_to_excel.Name = "BUT_Export_to_excel";
-            this.BUT_Export_to_excel.Size = new System.Drawing.Size(164, 67);
+            this.BUT_Export_to_excel.Size = new System.Drawing.Size(180, 85);
             this.BUT_Export_to_excel.TabIndex = 30;
             this.BUT_Export_to_excel.Text = "Export to Excel";
             this.BUT_Export_to_excel.UseVisualStyleBackColor = true;
@@ -117,9 +117,9 @@ namespace OcarinaInscription
             // 
             this.But_Supp_Enfant.AutoSize = true;
             this.But_Supp_Enfant.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.But_Supp_Enfant.Location = new System.Drawing.Point(1081, 288);
+            this.But_Supp_Enfant.Location = new System.Drawing.Point(1060, 291);
             this.But_Supp_Enfant.Name = "But_Supp_Enfant";
-            this.But_Supp_Enfant.Size = new System.Drawing.Size(170, 83);
+            this.But_Supp_Enfant.Size = new System.Drawing.Size(180, 85);
             this.But_Supp_Enfant.TabIndex = 25;
             this.But_Supp_Enfant.Text = "Supprimer Participant";
             this.But_Supp_Enfant.UseVisualStyleBackColor = true;
@@ -131,7 +131,8 @@ namespace OcarinaInscription
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeColumns = false;
             this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.Black;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.GridColor = System.Drawing.Color.Black;
@@ -141,16 +142,16 @@ namespace OcarinaInscription
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1065, 656);
+            this.dataGridView1.Size = new System.Drawing.Size(1044, 656);
             this.dataGridView1.TabIndex = 24;
             // 
             // Butt_Modifier_Participant
             // 
             this.Butt_Modifier_Participant.AutoSize = true;
             this.Butt_Modifier_Participant.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Butt_Modifier_Participant.Location = new System.Drawing.Point(1079, 198);
+            this.Butt_Modifier_Participant.Location = new System.Drawing.Point(1060, 200);
             this.Butt_Modifier_Participant.Name = "Butt_Modifier_Participant";
-            this.Butt_Modifier_Participant.Size = new System.Drawing.Size(163, 83);
+            this.Butt_Modifier_Participant.Size = new System.Drawing.Size(180, 85);
             this.Butt_Modifier_Participant.TabIndex = 23;
             this.Butt_Modifier_Participant.Text = "Modifier Participant";
             this.Butt_Modifier_Participant.UseVisualStyleBackColor = true;
@@ -170,9 +171,9 @@ namespace OcarinaInscription
             // 
             this.Butt_Add_Children.AutoSize = true;
             this.Butt_Add_Children.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Butt_Add_Children.Location = new System.Drawing.Point(1079, 109);
+            this.Butt_Add_Children.Location = new System.Drawing.Point(1060, 109);
             this.Butt_Add_Children.Name = "Butt_Add_Children";
-            this.Butt_Add_Children.Size = new System.Drawing.Size(163, 83);
+            this.Butt_Add_Children.Size = new System.Drawing.Size(180, 85);
             this.Butt_Add_Children.TabIndex = 20;
             this.Butt_Add_Children.Text = "Ajouter Participant";
             this.Butt_Add_Children.UseVisualStyleBackColor = true;
@@ -225,7 +226,7 @@ namespace OcarinaInscription
             this.Controls.Add(this.But_apayer);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MainForm";

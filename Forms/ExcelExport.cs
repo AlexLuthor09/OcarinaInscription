@@ -20,11 +20,7 @@ namespace OcarinaInscription
         { 
             InitializeComponent();
             this.Quoi = quoi;
-            if(quoi=='b')
-            {
-                DTP_Start.Visible = false;
-                DTP_Stop.Visible = false;
-            }
+           
             comboBox1.DataSource = null;
             comboBox1.DataSource = SqlManager.LoadPlaines();
             comboBox1.DisplayMember = "Nom";

@@ -49,13 +49,14 @@ namespace OcarinaInscription
 
             dataGridView1.Columns["N_National"].Visible = false;
             dataGridView1.Columns["Id"].Visible = false;
-            //dataGridView1.Columns["PlaineId"].Visible = false;
+            dataGridView1.Columns["PlaineId"].Visible = false;
             dataGridView1.Columns["Remarque"].Visible = false;
             dataGridView1.Columns["Allergie"].Visible = false;
             dataGridView1.Columns["Adresse"].Visible = false;
             dataGridView1.Columns[@"Age"].Visible = false;
             dataGridView1.Columns["Email"].Visible = false;
             dataGridView1.Columns["Date_Naissance"].Visible = false;
+            dataGridView1.Columns["fullname"].Visible = false;
 
         }
 

@@ -43,7 +43,7 @@ namespace OcarinaInscription.Forms
             this.Close();
         }
 
-        private void loadChild(ChillModel chillModel)
+        public void loadChild(ChillModel chillModel)
         {
             try
             {
@@ -134,6 +134,12 @@ namespace OcarinaInscription.Forms
             //{
             //    e.Handled = true;
             //}
+        }
+
+        private void But_Recherhechild_Click(object sender, EventArgs e)
+        {
+            Childifinder childifinder = new Childifinder(this);
+            childifinder.Show();
         }
     }
 }
