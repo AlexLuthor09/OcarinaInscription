@@ -24,10 +24,8 @@ namespace OcarinaInscription
         public MainForm()
         {
             try
-            {
-                
-                Initialisation();
-               
+            {              
+                Initialisation();            
             }
             catch (Exception ex)
             {
@@ -62,13 +60,13 @@ namespace OcarinaInscription
 
         private void Butt_Add_Children_Click(object sender, EventArgs e)
         {
-            this.Enabled = false;
+            ButtonEnable(false);
             FM.OpenInscription(CurrentPlaineID);
         }
 
         private void Butt_Modifier_Participant_Click(object sender, EventArgs e)
         {
-            this.Enabled = false;
+            ButtonEnable(false);
             try
             {
                 FM.OpenInscription(selectedChild());
@@ -80,16 +78,15 @@ namespace OcarinaInscription
         }
 
         private void MainForm_Activated(object sender, EventArgs e)
-        { 
-            this.Enabled = true;
+        {
+            ButtonEnable(true);
             LoadDBToList();
-            
-            
+          
         }
 
         private void But_Supp_Enfant_Click(object sender, EventArgs e)
         {
-            this.Enabled = false;
+            ButtonEnable(false);
             var enfatn = selectedChild();
             try
             {
@@ -137,24 +134,25 @@ namespace OcarinaInscription
         private void But_Remarque_Click(object sender, EventArgs e)
         {
             FM.OpenExcelExport('b',CurrentPlaineID);
-            this.Enabled = false;
+            ButtonEnable(false);
         }
 
         private void BUT_Export_to_excel_Click(object sender, EventArgs e)
         {
             FM.OpenExcelExport('a',CurrentPlaineID);
-            this.Enabled = false;
+            ButtonEnable(false);
         }
 
         private void But_changeWEEK_Click(object sender, EventArgs e)
         {
             FM.OpenWeekChoise(this);
-            this.Enabled = false;
+            ButtonEnable(false);
         }
         private void Initialisation()
         { 
             InitializeComponent();
             LoadDBToList();
+            this.CurrentPlaineID = 1;
             ButtonEnable(false);
         }
         public void ButtonEnable(bool vp)

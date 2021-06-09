@@ -111,9 +111,9 @@ namespace OcarinaInscription.Forms
             chillModel.Nbr_jour = 0;
 
             if (chillModel.MC && !chillModel.BIM)
-                chillModel.Prix = "1.5";
+                chillModel.Prix = "3";
             else if (chillModel.BIM)
-                chillModel.Prix = "1";
+                chillModel.Prix = "3";
             else if (!chillModel.MC && !chillModel.BIM)
                 chillModel.Prix = "6.5";
             if (chillModel.Age >= 9)

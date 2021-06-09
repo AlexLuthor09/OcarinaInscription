@@ -51,10 +51,10 @@
     <ROW Property="ARPNOREPAIR" MultiBuildValue="DefaultBuild:1"/>
     <ROW Property="ARPPRODUCTICON" Value="icons8inscription24.exe" Type="8"/>
     <ROW Property="Manufacturer" Value="Ocarina"/>
-    <ROW Property="ProductCode" Value="1033:{3D4C13C4-727B-43DC-8BFB-1AC812AA3E98} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{8E49542C-5A00-4CA0-A9F7-5D3E6CE29522} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Inscription"/>
-    <ROW Property="ProductVersion" Value="1.0.0" Type="32"/>
+    <ROW Property="ProductVersion" Value="2.0.0" Type="32"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="UpgradeCode" Value="{89214C89-4842-4F27-9259-89C7F0ED7947}"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
