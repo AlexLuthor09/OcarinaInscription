@@ -17,6 +17,7 @@ namespace OcarinaInscription.Forms
         private List<PlaineModel> plaines = new List<PlaineModel>();
         private FormManager FM = new FormManager();
         private MainForm mainForm;
+        private bool supp = false;
         public WeekChoise(MainForm main)
         {
             InitializeComponent();
@@ -33,39 +34,43 @@ namespace OcarinaInscription.Forms
         }
         private void But_supp_Click(object sender, EventArgs e)
         {
-            SqlManager.DeletePlaine(selectedPlaine());
-            
+            supp = true;
+            DialogResult dialogResult = MessageBox.Show($"Es-tu sûr de vouloir supprimer cette semaine : {selectedPlaine().fullname} ?  ", "Supprimer", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                
+                SqlManager.DeletePlaine(selectedPlaine());
+                LoadplainesToList();
+            }
         }
 
         private void Butt_Validating_Click(object sender, EventArgs e)
         {
             mainForm.CurrentPlaineID = selectedPlaine().Id;
+            mainForm.ButtonEnable(true);
             this.Close();
         }
 
         private void But_NewWeek_Click(object sender, EventArgs e)
-        {
-            DialogResult dialogResult = MessageBox.Show("Es-tu sûr de vouloir commencer une nouvelle semaine ? \n Si oui , la base de donées va être réinitialisez.", "Nouvelle semaine", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                FM.OpenNewWeek();
-                LoadplainesToList();
-            }
+        {            
+            FM.OpenNewWeek();
         }
 
         private void But_modifweek_Click(object sender, EventArgs e)
         {
             FM.OpenNewWeek(selectedPlaine());
+            LoadplainesToList();
         }
         private PlaineModel selectedPlaine()
         {
-            if (plaines.Count > 0)
-                return this.dataGridView1.CurrentRow.DataBoundItem as PlaineModel;
-            else
-            {
-                PlaineModel plaineModel = new PlaineModel();
-                return plaineModel;
-            }
+             return dataGridView1.CurrentRow.DataBoundItem as PlaineModel;
+        }
+
+        private void WeekChoise_Activated(object sender, EventArgs e)
+        {
+            if(!supp)
+            LoadplainesToList();
+            else supp = false;
         }
     }
 }

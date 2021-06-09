@@ -30,5 +30,13 @@ namespace OcarinaInscription.Class
         public bool Jeudi { get; set; }
         public bool Vendredi { get; set; }
         public int PlaineId { get; set; }
+
+        public string fullname
+        {
+            get
+            {
+                return $"{this.Nom} {this.Prenom}";
+            }
+        }
     }
 }

@@ -21,9 +21,9 @@ namespace OcarinaInscription.Class
             Inscription Inscription = new Inscription(chillmodel);
             OpenForms(Inscription);
         }
-        public void OpenExcelExport(char quoi)
+        public void OpenExcelExport(char quoi,int p)
         {
-            ExcelExport excel=new ExcelExport(quoi);
+            ExcelExport excel=new ExcelExport(quoi,p);
             OpenForms(excel);
         }
         public void OpenNewWeek()
@@ -34,7 +34,9 @@ namespace OcarinaInscription.Class
         public void OpenWeekChoise(MainForm mainForm)
         {
             WeekChoise weekChoise = new WeekChoise(mainForm);
+            
             OpenForms(weekChoise);
+            
         }
         public void OpenNewWeek(PlaineModel plaine)
         {
@@ -45,6 +47,7 @@ namespace OcarinaInscription.Class
         {
             activeform.Activate();
             activeform.Visible = true;
+          
         }
     }
 }

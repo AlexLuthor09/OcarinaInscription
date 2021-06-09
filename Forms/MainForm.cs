@@ -25,8 +25,9 @@ namespace OcarinaInscription
         {
             try
             {
-                InitializeComponent();
-                LoadDBToList();
+                
+                Initialisation();
+               
             }
             catch (Exception ex)
             {
@@ -48,23 +49,26 @@ namespace OcarinaInscription
 
             dataGridView1.Columns["N_National"].Visible = false;
             dataGridView1.Columns["Id"].Visible = false;
-            //dataGridView1.Columns["PlaineId"].Visible = false;
+            dataGridView1.Columns["PlaineId"].Visible = false;
             dataGridView1.Columns["Remarque"].Visible = false;
             dataGridView1.Columns["Allergie"].Visible = false;
             dataGridView1.Columns["Adresse"].Visible = false;
             dataGridView1.Columns[@"Age"].Visible = false;
             dataGridView1.Columns["Email"].Visible = false;
             dataGridView1.Columns["Date_Naissance"].Visible = false;
+            dataGridView1.Columns["fullname"].Visible = false;
 
         }
 
         private void Butt_Add_Children_Click(object sender, EventArgs e)
         {
+            this.Enabled = false;
             FM.OpenInscription(CurrentPlaineID);
         }
 
         private void Butt_Modifier_Participant_Click(object sender, EventArgs e)
         {
+            this.Enabled = false;
             try
             {
                 FM.OpenInscription(selectedChild());
@@ -76,16 +80,20 @@ namespace OcarinaInscription
         }
 
         private void MainForm_Activated(object sender, EventArgs e)
-        {
+        { 
+            this.Enabled = true;
             LoadDBToList();
+            
+            
         }
 
         private void But_Supp_Enfant_Click(object sender, EventArgs e)
         {
+            this.Enabled = false;
             var enfatn = selectedChild();
             try
             {
-                DialogResult dialogResult = MessageBox.Show($"Es-tu sûr de vouloir supprimer ce participant  ?  ", "Supprimer", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show($"Es-tu sûr de vouloir supprimer ce participant {selectedChild().Nom + " " + selectedChild().Prenom} ?  ", "Supprimer", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
                     SqlManager.DeleteChild(enfatn);
@@ -128,19 +136,46 @@ namespace OcarinaInscription
 
         private void But_Remarque_Click(object sender, EventArgs e)
         {
-            FM.OpenExcelExport('b');
+            FM.OpenExcelExport('b',CurrentPlaineID);
+            this.Enabled = false;
         }
 
         private void BUT_Export_to_excel_Click(object sender, EventArgs e)
         {
-            FM.OpenExcelExport('a');
+            FM.OpenExcelExport('a',CurrentPlaineID);
+            this.Enabled = false;
         }
-
-       
 
         private void But_changeWEEK_Click(object sender, EventArgs e)
         {
             FM.OpenWeekChoise(this);
+            this.Enabled = false;
+        }
+        private void Initialisation()
+        { 
+            InitializeComponent();
+            LoadDBToList();
+            ButtonEnable(false);
+        }
+        public void ButtonEnable(bool vp)
+        {
+            Butt_Add_Children.Enabled = vp;
+            BUT_Export_to_excel.Enabled = vp;
+            Butt_Modifier_Participant.Enabled = vp;
+            But_apayer.Enabled = vp;
+            But_Remarque.Enabled = vp;
+            But_Supp_Enfant.Enabled = vp;
+            BUT_Refresh.Enabled = vp;
+
+        }
+        private void MainForm_Deactivate(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            this.Show();
         }
     }
 }
